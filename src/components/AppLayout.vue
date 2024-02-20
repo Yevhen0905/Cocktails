@@ -2,19 +2,52 @@
   <div class="root">
     <div class="img" :style="`background-image: url(${imgUrl})`"></div>
     <div class="main">
-      <el-button class="btn_random">Get random cocktail</el-button>
+      <div class="btn_wrapper">
+        <el-button v-if="isBackButtonVisible" class="back" type="primary" :icon="Back" circle @click="goBack" />
+        <el-button class="btn_random" @click="goForCocktailRandom">Get random cocktail</el-button>
+      </div>
+
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script setup>
+  import {computed} from 'vue';
+  import {ROUTER_PATH} from '@/constants';
+  import {useRoute, useRouter} from 'vue-router';
+  import {Back} from '@element-plus/icons-vue';
+
   const props = defineProps({
     imgUrl: {
       type: String,
       required: true
+    },
+    backPage: {
+      type: Function
+    },
+    isBackButtonVisible: {
+      type: Boolean,
+      default: true
     }
   });
+
+  const route = useRoute();
+  const router = useRouter();
+
+  const routeName = computed(() => route.name);
+
+  function goForCocktailRandom() {
+    router.push(ROUTER_PATH.COCKTAIL_RANDOM);
+
+    if (routeName.value === ROUTER_PATH.COCKTAIL_RANDOM) {
+      router.go();
+    }
+  }
+
+  function goBack() {
+    props.backPage ? props.backPage() : router.go(-1);
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -54,6 +87,21 @@
       background-color: darken($accept, 10%);
       border-color: darken($accept, 10%);
       color: $text;
+    }
+  }
+
+  .btn_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .back {
+    background-color: transparent;
+    border-color: $text;
+
+    &:hover {
+      border-color: $accept;
     }
   }
 </style>

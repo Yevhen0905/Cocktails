@@ -1,5 +1,9 @@
 <template>
-  <AppLayout imgUrl="/src/assets/img/cocktail1.webp">
+  <AppLayout
+    imgUrl="/src/assets/img/cocktail1.webp"
+    :back-page="removeIngredient"
+    :is-back-button-visible="!!ingredient"
+  >
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <div class="title">Choose your drink</div>
@@ -55,6 +59,10 @@
 
   function getCocktails() {
     rootStore.getCocktails(rootStore.ingredient);
+  }
+
+  function removeIngredient() {
+    rootStore.setIngredient(null);
   }
 </script>
 

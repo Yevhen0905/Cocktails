@@ -23,3 +23,42 @@
   padding: 80px 0;
   text-align: center;
 }
+
+.list {
+  color: $textDark;
+  margin: 50px 0 60px;
+  text-align: start;
+  width: 560px;
+
+  .list_item {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      background: no-repeat 50% 50% url('/src/assets/img/heart4.png');
+      background-size: cover;
+    }
+  }
+}
+
+.instruction {
+  color: $textDark;
+  width: 516px;
+  margin: 0 auto;
+  font-size: 20p;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+}

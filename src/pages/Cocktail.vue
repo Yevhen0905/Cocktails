@@ -5,6 +5,15 @@
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
           <div class="line"></div>
+          <div class="list">
+            <div v-for="(item, key) in ingredients" :key="key" class="list_item">
+              {{ item.name }}
+              <template v-if="item.measure">| {{ item.measure }}</template>
+            </div>
+          </div>
+          <div class="instruction">
+            {{ cocktail.strInstructions }}
+          </div>
         </div>
       </div>
     </AppLayout>
@@ -36,7 +45,7 @@
       ingredients.push(ingredient);
     }
 
-    return ingredients
+    return ingredients;
   });
 
   async function getCocktail() {
