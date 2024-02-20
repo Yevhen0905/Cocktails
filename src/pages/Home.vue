@@ -1,6 +1,6 @@
 <template>
   <AppLayout
-    imgUrl="/src/assets/img/cocktail1.webp"
+    imgUrl="./src/assets/img/cocktail1.webp"
     :back-page="removeIngredient"
     :is-back-button-visible="!!ingredient"
   >
