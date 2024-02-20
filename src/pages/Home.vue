@@ -38,7 +38,7 @@
         <div class="title">COCKTAILS WITH {{ ingredient }}</div>
         <div class="line"></div>
         <div class="cocktails">
-          <CocktailChoice v-for="cocktail in cocktails" :key="cocktail.idDrink" :cocktail="cocktail" />
+          <CocktailSelect v-for="cocktail in cocktails" :key="cocktail.idDrink" :cocktail="cocktail" />
         </div>
       </div>
     </div>
@@ -46,24 +46,21 @@
 </template>
 
 <script setup>
-  import {ref} from 'vue';
   import {storeToRefs} from 'pinia';
-  import {useRootStore} from '@/stores/root';
+  import {useRootStore} from '@/stores';
   import AppLayout from '../components/AppLayout.vue';
-  import CocktailChoice from '../components/CocktailChoice.vue';
+  import CocktailSelect from '../components/CocktailSelect.vue';
 
   const rootStore = useRootStore();
   rootStore.getIngredients();
 
   const {ingredients, ingredient, cocktails} = storeToRefs(rootStore);
 
-  function getCocktails() {
-    rootStore.getCocktails(rootStore.ingredient);
-  }
+  const getCocktails = () => rootStore.getCocktails(rootStore.ingredient);
 
-  function removeIngredient() {
-    rootStore.setIngredient(null);
-  }
+
+  const removeIngredient = () => rootStore.setIngredient(null);
+  
 </script>
 
 <style lang="scss" scoped>
@@ -100,5 +97,7 @@
     margin-top: 60px;
     max-height: 400px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #69696a  #343440;
   }
 </style>

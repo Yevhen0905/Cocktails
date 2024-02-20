@@ -8,7 +8,7 @@
           <div class="list">
             <div v-for="(item, key) in ingredients" :key="key" class="list_item">
               {{ item.name }}
-              <template v-if="item.measure">| {{ item.measure }}</template>
+              <template v-if="item.measure"> | {{ item.measure }}</template>
             </div>
           </div>
           <div class="instruction">
@@ -29,7 +29,7 @@
 
   const route = useRoute();
 
-  const cocktail = ref(null);
+  const cocktail = ref('');
   const cocktailId = computed(() => route.path.split('/').pop());
 
   const ingredients = computed(() => {
@@ -48,10 +48,10 @@
     return ingredients;
   });
 
-  async function getCocktail() {
+  const getCocktail = async () => {
     const data = await axios.get(`${COCKTAIL_BY_ID}${cocktailId.value}`);
     cocktail.value = data?.data?.drinks[0];
-  }
+  };
 
   getCocktail();
 </script>

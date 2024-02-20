@@ -20,7 +20,7 @@ export const useRootStore = defineStore('root', {
     },
 
     setIngredient(val) {
-        this.ingredient = val
+      this.ingredient = val;
     }
   }
 });

@@ -6,7 +6,6 @@
         <el-button v-if="isBackButtonVisible" class="back" type="primary" :icon="Back" circle @click="goBack" />
         <el-button class="btn_random" @click="goForCocktailRandom">Get random cocktail</el-button>
       </div>
-
       <slot></slot>
     </div>
   </div>
@@ -37,17 +36,15 @@
 
   const routeName = computed(() => route.name);
 
-  function goForCocktailRandom() {
+  const goForCocktailRandom = () => {
     router.push(ROUTER_PATH.COCKTAIL_RANDOM);
 
     if (routeName.value === ROUTER_PATH.COCKTAIL_RANDOM) {
       router.go();
     }
-  }
+  };
 
-  function goBack() {
-    props.backPage ? props.backPage() : router.go(-1);
-  }
+  const goBack = () => (props.backPage ? props.backPage() : router.go(-1));
 </script>
 
 <style lang="scss" scoped>

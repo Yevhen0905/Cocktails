@@ -1,9 +1,9 @@
 <template>
   <div if="cocktail" class="wrap">
-    <AppLayout :imgUrl="cocktail.strDrinkThumb">
+    <AppLayout :imgUrl="cocktailRandom.strDrinkThumb">
       <div class="wrapper">
         <div class="info">
-          <div class="title">{{ cocktail.strDrink }}</div>
+          <div class="title">{{ cocktailRandom.strDrink }}</div>
           <div class="line"></div>
           <div class="slider">
             <swiper class="swiper" :slides-per-view="3" :space-between="50">
@@ -14,7 +14,7 @@
             </swiper>
           </div>
           <div class="instruction">
-            {{ cocktail.strInstructions }}
+            {{ cocktailRandom.strInstructions }}
           </div>
         </div>
       </div>
@@ -30,26 +30,25 @@
   import 'swiper/css';
   import AppLayout from '../components/AppLayout.vue';
 
-  const cocktail = ref(null);
+  const cocktailRandom = ref('');
 
   const ingredients = computed(() => {
     const ingredients = [];
 
     for (let i = 1; i <= 15; i++) {
-      if (!cocktail.value[`strIngredient${i}`]) break;
+      if (!cocktailRandom.value[`strIngredient${i}`]) break;
 
-      const ingredient = cocktail.value[`strIngredient${i}`];
-
+      const ingredient = cocktailRandom.value[`strIngredient${i}`];
       ingredients.push(ingredient);
     }
 
     return ingredients;
   });
 
-  async function getCocktail() {
+  const getCocktail = async () => {
     const data = await axios.get(COCKTAIL_RANDOM);
-    cocktail.value = data?.data?.drinks[0];
-  }
+    cocktailRandom.value = data?.data?.drinks[0];
+  };
 
   getCocktail();
 </script>
@@ -64,6 +63,10 @@
   .swiper {
     width: 586px;
     color: $text;
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #69696a #343440;
   }
   .name_ingredient {
     margin-top: 10px;

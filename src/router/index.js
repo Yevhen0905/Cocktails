@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import { ROUTER_PATH } from '@/constants';
+import {ROUTER_PATH} from '@/constants';
 import Home from '../pages/Home.vue';
 import Cocktail from '../pages/Cocktail.vue';
 import CocktailRandom from '../pages/CocktailRandom.vue';
@@ -22,14 +22,6 @@ const router = createRouter({
       name: ROUTER_PATH.COCKTAIL_RANDOM,
       component: CocktailRandom
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 });
 
