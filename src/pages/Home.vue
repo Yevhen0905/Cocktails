@@ -1,6 +1,6 @@
 <template>
   <AppLayout
-    imgUrl="./src/assets/img/cocktail1.webp"
+    imgUrl="https://i.gstatvb.com/84d78de326bc79aeeb86e4956db997d31708520741.rng.webp"
     :back-page="removeIngredient"
     :is-back-button-visible="!!ingredient"
   >
@@ -31,7 +31,7 @@
           our cocktail generator.
         </div>
         <div class="img_wrapper">
-          <img class="img" src="../assets/img/kokteil-krasivie-foto.png" alt="img" />
+          <img class="img" src="https://i.gstatvb.com/5376de7c6c4d28408db52dadc6a1ecb31708520804.rng.png" alt="img" />
         </div>
       </div>
       <div v-else class="info">
