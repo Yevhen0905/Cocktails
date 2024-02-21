@@ -20,13 +20,8 @@
   @import '../assets/styles/main';
 
   .root {
-    width: calc((100% - 76px) / 3);
-    margin-right: 38px;
-    margin-bottom: 15px;
-
-    &:nth-child(3n + 3) {
-      margin-right: 0;
-    }
+    max-width: 120px;
+    width: 100%;
     .picture {
       width: 120px;
       height: 120px;

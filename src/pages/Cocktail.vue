@@ -49,8 +49,12 @@
   });
 
   const getCocktail = async () => {
-    const data = await axios.get(`${COCKTAIL_BY_ID}${cocktailId.value}`);
-    cocktail.value = data?.data?.drinks[0];
+    try {
+      const data = await axios.get(`${COCKTAIL_BY_ID}${cocktailId.value}`);
+      cocktail.value = data?.data?.drinks[0];
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   getCocktail();

@@ -40,6 +40,7 @@
     if (routeName.value === ROUTER_PATH.COCKTAIL_RANDOM) {
       router.go();
     }
+
     router.push(ROUTER_PATH.COCKTAIL_RANDOM);
   };
 
@@ -53,6 +54,10 @@
     display: flex;
     background: $background;
     min-height: 100vh;
+
+    @media only screen and (max-width: 820px) {
+      flex-direction: column;
+    }
   }
 
   .img {
@@ -60,18 +65,29 @@
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
+
+    @media only screen and (max-width: 820px) {
+      width: 100%;
+      min-height: 75vh;
+    }
   }
 
   .main {
     position: relative;
     width: 50%;
     padding: 32px 40px;
+
+    @media only screen and (max-width: 1150px) {
+      padding: 22px;
+    }
+
+    @media only screen and (max-width: 820px) {
+      width: 100%;
+    }
   }
 
   .btn_random {
-    position: absolute;
-    top: 32px;
-    right: 40px;
+    position: relative;
     background-color: $accept;
     border-color: $accept;
     color: $text;

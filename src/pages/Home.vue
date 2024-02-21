@@ -58,9 +58,7 @@
 
   const getCocktails = () => rootStore.getCocktails(rootStore.ingredient);
 
-
   const removeIngredient = () => rootStore.setIngredient(null);
-  
 </script>
 
 <style lang="scss" scoped>
@@ -74,6 +72,7 @@
   }
   .text {
     max-width: 516px;
+    width: 100%;
     margin: 60px auto 0;
     line-height: 36px;
     letter-spacing: 0.1em;
@@ -89,15 +88,16 @@
       width: 100%;
     }
   }
-
   .cocktails {
     display: flex;
     flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-around;
     align-items: center;
     margin-top: 60px;
     max-height: 400px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #69696a  #343440;
+    scrollbar-color: #69696a #343440;
   }
 </style>

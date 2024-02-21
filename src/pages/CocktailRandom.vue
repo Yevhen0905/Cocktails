@@ -6,7 +6,7 @@
           <div class="title">{{ cocktailRandom.strDrink }}</div>
           <div class="line"></div>
           <div class="slider">
-            <swiper class="swiper" :slides-per-view="3" :space-between="50">
+            <swiper class="swiper" :slides-per-view="3" :space-between="10">
               <swiper-slide v-for="(item, key) in ingredients" :key="key">
                 <img :src="`${INGREDIENTS_PICTURE}${item}-Small.png`" alt="" />
                 <div class="name_ingredient">{{ item }}</div>
@@ -46,8 +46,12 @@
   });
 
   const getCocktail = async () => {
-    const data = await axios.get(COCKTAIL_RANDOM);
-    cocktailRandom.value = data?.data?.drinks[0];
+    try {
+      const data = await axios.get(COCKTAIL_RANDOM);
+      cocktailRandom.value = data?.data?.drinks[0];
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   getCocktail();
@@ -61,12 +65,29 @@
   }
 
   .swiper {
-    width: 586px;
+    max-width: 586px;
+    width: 100%;
     color: $text;
     padding-bottom: 10px;
     overflow-x: auto;
     scrollbar-width: thin;
     scrollbar-color: #69696a #343440;
+
+    @media only screen and (max-width: 1200px) {
+      max-width: 450px;
+    }
+
+    @media only screen and (max-width: 960px) {
+      max-width: 380px;
+    }
+
+    @media only screen and (max-width: 820px) {
+      max-width: 480px;
+    }
+
+    @media only screen and (max-width: 520px) {
+      max-width: 350px;
+    }
   }
   .name_ingredient {
     margin-top: 10px;

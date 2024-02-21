@@ -4,6 +4,9 @@
   font-weight: 500;
   letter-spacing: 0.2em;
   color: $text;
+
+  @media only screen and (max-width: 900px) {
+  }
 }
 
 .line {
@@ -28,7 +31,8 @@
   color: $textDark;
   margin: 50px 0 60px;
   text-align: start;
-  width: 560px;
+  max-width: 560px;
+  width: 100%;
 
   .list_item {
     margin-bottom: 20px;
@@ -56,7 +60,8 @@
 
 .instruction {
   color: $textDark;
-  width: 516px;
+  max-width: 516px;
+  width: 100%;
   margin: 0 auto;
   font-size: 20p;
   line-height: 30px;
