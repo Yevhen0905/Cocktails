@@ -37,11 +37,10 @@
   const routeName = computed(() => route.name);
 
   const goForCocktailRandom = () => {
-    router.push(ROUTER_PATH.COCKTAIL_RANDOM);
-
     if (routeName.value === ROUTER_PATH.COCKTAIL_RANDOM) {
       router.go();
     }
+    router.push(ROUTER_PATH.COCKTAIL_RANDOM);
   };
 
   const goBack = () => (props.backPage ? props.backPage() : router.go(-1));
