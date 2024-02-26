@@ -38,7 +38,7 @@
 
   const goForCocktailRandom = () => {
     if (routeName.value === ROUTER_PATH.COCKTAIL_RANDOM) {
-      router.go();
+      router.go(0);
     }
 
     router.push(ROUTER_PATH.COCKTAIL_RANDOM);

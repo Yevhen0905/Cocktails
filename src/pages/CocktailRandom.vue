@@ -6,12 +6,12 @@
           <div class="title">{{ cocktailRandom.strDrink }}</div>
           <div class="line"></div>
           <div class="slider">
-            <swiper class="swiper" :slides-per-view="3" :space-between="10">
-              <swiper-slide v-for="(item, key) in ingredients" :key="key">
+            <Swiper class="swiper" :slides-per-view="3" :space-between="10">
+              <SwiperSlide v-for="(item, key) in ingredients" :key="key">
                 <img :src="`${INGREDIENTS_PICTURE}${item}-Small.png`" alt="" />
                 <div class="name_ingredient">{{ item }}</div>
-              </swiper-slide>
-            </swiper>
+              </SwiperSlide>
+            </Swiper>
           </div>
           <div class="instruction">
             {{ cocktailRandom.strInstructions }}
